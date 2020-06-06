@@ -22,8 +22,19 @@
 //    q.remove() // 2
 //    q.remove() // 'There'
 
-const Queue = require('./queue');
+const Queue = require("./queue");
 
-function weave(sourceOne, sourceTwo) {}
+function weave(sourceOne, sourceTwo) {
+  const q = new Queue();
+  while (sourceTwo.peek() || sourceOne.peek()) { // seeing if each last element is valid
+    if (sourceOne.peek()) { // if this array's last element is valid...
+      q.add(sourceOne.remove()); // ...add the last element of the array into the new array
+    }
+    if (sourceTwo.peek()) {
+      q.add(sourceTwo.remove());
+    }
+  }
+  return q;
+}
 
 module.exports = weave;
