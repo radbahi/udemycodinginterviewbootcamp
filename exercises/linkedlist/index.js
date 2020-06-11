@@ -181,6 +181,14 @@ class LinkedList {
             counter++
         }
     }
+
+    *[Symbol.iterator]() { // generator function with key of Symbol.iterator. need to search up what Symbol.iterator does
+        let node = this.head // starts off node with first in linkedlist
+        while (node) { // if true...
+            yield node // yield the result...
+            node = node.next // then define the next one. this keeps repeating until no more nodes to define. 
+        }
+    }
     
 }
 

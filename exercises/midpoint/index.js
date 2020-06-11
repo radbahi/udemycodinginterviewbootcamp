@@ -12,6 +12,15 @@
 //   l.insertLast('c')
 //   midpoint(l); // returns { data: 'b' }
 
-function midpoint(list) {}
+function midpoint(list) { // instructor solution. didn't know you could call next as well. would've done it myself.
+    let slow = list.getFirst()
+    let fast = list.getFirst()
+
+    while (fast.next && fast.next.next) {
+        slow = slow.next
+        fast = fast.next.next
+    }
+    return slow
+}
 
 module.exports = midpoint;
