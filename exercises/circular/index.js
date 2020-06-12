@@ -12,6 +12,18 @@
 //   c.next = b;
 //   circular(l) // true
 
-function circular(list) {}
+function circular(list) { // watched video solution but modified code myself
+  let slow = list.getFirst(); // using same method as midpoint to get these two nodes
+  let fast = list.getFirst();
+
+  while (fast.next && fast.next.next) {
+    slow = slow.next;
+    fast = fast.next.next;
+    if (slow === fast) { // if at any point these two equal each other, break the loop by returning true
+      return true;
+    }
+  }
+  return false; // if they're not equal at any point, return false
+}
 
 module.exports = circular;
