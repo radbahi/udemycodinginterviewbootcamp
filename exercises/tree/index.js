@@ -36,7 +36,7 @@ class Tree {
         const arr = [this.root] // create array with the root value
         while (arr.length) { // while there are elements in the array...
             const node = arr.shift() // takes out the first element in the array
-            arr.push(...node.children) // pushes the children of that element to the end of the array. uses spread operator because node.children is an array. we don't want to push the whole array, just the elements INSIDE the node.children array
+            arr.push(...node.children) // pushes the children of that node element to the end of the array. uses spread operator because node.children is an array. we don't want to push the whole array, just the elements INSIDE the node.children array
             fn(node) // look at instructions. this is called as a function because traverseBF is meant to apply things to each node, like add 10. look at this video 0:35 for example. https://www.udemy.com/course/coding-interview-bootcamp-algorithms-and-data-structure/learn/lecture/8547228#content
         }
     }
