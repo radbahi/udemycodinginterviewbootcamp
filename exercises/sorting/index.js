@@ -47,11 +47,26 @@ function selectionSort(arr) {
 }
 
 function mergeSort(arr) {
-
+    if (arr.length === 1) {
+        return arr
+    }
+    const center = Math.floor(arr.length / 2) // use this to get center element. still works on even-numbered arrays, just goes one to the right.
+    const left = arr.slice(0, center) // all elements "left" of the center, so first element up to BUT NOT INCLUDING center
+    const right = arr.slice(center) // all elements INCLUDING center until the end. 
+    return merge(mergeSort(left), mergeSort(right)) // mergeSort recursively calls to whittle down arrays to one element
+    // watch this video for explanation of return statement above https://www.udemy.com/course/coding-interview-bootcamp-algorithms-and-data-structure/learn/lecture/8547306#content
 }
 
 function merge(left, right) {
-
+    const results = [] // create new array for merged elements
+    while (left.length && right.length) { // while these arrays both have elements in them...
+        if (left[0] < right[0]) { // if first element in left array is less than first element of right array.....
+            results.push(left.shift()) // .... push that element into results array. REMEMBER TO USE SHIFT SO WE CAN WORK WITH NEXT ELEMENT
+        } else {
+            results.push(right.shift()) // if not less, then just push first right element in
+        }
+    }
+    return [...results, ...left, ...right] // return all elements in result and any remainders in left and right as array
 }
 
 module.exports = { bubbleSort, selectionSort, mergeSort, merge };
